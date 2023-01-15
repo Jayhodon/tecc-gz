@@ -1,6 +1,6 @@
-# project
+# tecc-gz
 
-## Project setup
+## tecc-gz setup
 ```
 npm install
 ```
