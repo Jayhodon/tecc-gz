@@ -1,0 +1,61 @@
+@charset "utf-8";
+/* CSS Document */
+
+/*通用定义*/
+.clearfix:after {clear:both; height:0; overflow:hidden; display:block; visibility:hidden; content:"."; }
+.fl{ float:left;}
+.fr{ float:right;}
+.clearer{clear:both; height:0; display:block; font-size:1px;overflow:hidden;}
+
+.layout, .content{ width:1200px; margin:0 auto; position: relative;}
+
+.marB10{ margin-bottom: 10px;}
+.marB20{ margin-bottom: 20px;}
+.marB30{ margin-bottom: 30px;}
+.marB40{ margin-bottom: 40px;}
+.marB60{ margin-bottom: 60px;}
+.marR30{ margin-right: 30px;}
+.marR32{ margin-right: 32px;}
+.marTm10{ margin-top: -10px;}
+.padS20{ padding: 0 20px;}
+.padS30{ padding: 0 30px;}
+
+
+.boxMo{ min-width:1200px;}
+
+.top_bar{ height: 40px; background-color: #26283c; }
+.top_bar_list{ float: right;}
+.top_bar_list li{ float: right; height: 40px; margin-left: 15px; font-size: 14px; line-height: 40px; overflow: hidden;}
+.top_bar_list li.ipv6 img{ display: block; height: 20px; margin-top: 10px;}
+.top_bar_list li.wza{ padding-left: 34px; background: url(../images/icon_wza.png) no-repeat left center;}
+.top_bar_list li a{ color: #fff;cursor:pointer;}
+
+.banner{ position: relative; height: 356px; background: url(../images/banner.jpg) no-repeat center top; }
+.box_search{ position: absolute; top: 250px; left: 50%; width: 500px; height: 42px; margin-left: -251px; background-color: #fff; border: 1px solid #12479b; border-radius: 21px;}
+#search_text{ position: absolute; top: 0; left: 15px; width: 280px; height: 42px; font: 16px/42px "Microsoft Yahei"; color: #666; background: none; border: none; outline: none;}
+#search_btn{ position: absolute; top: 5px; right: 11px; width: 30px; height: 30px; background: url(../images/btn_search.png) no-repeat center top; cursor: pointer; border: none;}
+
+.nav{ position: relative; height: 60px; background-color: #12479b; text-align: center; z-index: 3}
+.nav_con{ min-width: 1200px; margin: 0 auto;}
+.nav_tem{ display: inline-block; width: 200px; height: 60px; margin-right: -3px; font: 20px/60px "Microsoft Yahei"; color: #fff; text-align: center;}
+.nav_tem a.nav_link{  color: #fff; }
+
+.nav_sublist{ display: none; position: absolute; top: 60px; left: 0; width: 100%; height: auto; padding: 10px 0; background-color: #3868b5; background: rgba(56,104,181,0.95);}
+.nav_sublist a{ float: left; width: 200px; height: 40px; margin-right: 40px; font-size: 16px; line-height: 40px; color: #fff; text-align: center;}
+
+.nav_tem.active{ background-color: #043c97}
+.nav_tem.active .nav_sublist{ display: block;}
+
+.footer{ padding-bottom: 40px;}
+.footer_des{ font: 14px/26px "Microsoft Yahei"; color: #333; text-align: center;}
+.footer_des span{ margin: 0 4px;}
+.footer_link{ margin-right: 2px;}
+
+.footer_qrcode{ position: absolute; top: 0; left: 0;}
+.footer_qrcode_tem{ float: left; width: 98px; height: 132px; margin-right: 18px; background-color: #fff; border: 1px solid #d3d3d3; border-radius: 4px; overflow: hidden;}
+.footer_qrcode_tem img{ display: block; width: 86px; height: 86px; margin: 6px auto 0;}
+.footer_qrcode_tem p{ height: 14px; margin-top: 10px; font-size: 14px; line-height: 14px; color: #333; text-align: center;}
+
+.sidebar{ position: fixed; left: 50%; bottom: 30px; width: 158px; margin-left: 630px;}
+.sidebar img{ width: 100px; height: 100px; border: 1px solid #b1c4ee;}
+
