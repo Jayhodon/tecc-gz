@@ -4,7 +4,7 @@
  * @Author: tangjiahao
  * @Date: 2023-01-16 11:01:41
  * @LastEditors: tangjiahao
- * @LastEditTime: 2023-01-30 15:38:27
+ * @LastEditTime: 2023-01-30 23:16:32
  * @FilePath: /tecc-gz/src/TECCHome.vue
  * Copyright (C) 2023 tangjiahao. All rights reserved.
 -->
@@ -31,11 +31,7 @@
   </div>
   <!-- header 首页头部背景版 -->
   <div class="header">
-    <div class="headercon">
-      <img
-        src="./assets/homeBanner.jpeg"
-        style="display: block; width: 100%; height: 100%"
-      />
+    <div class="headerIcon">
       <div class="logo">
         <span>广东省商标品牌指导示范站</span>
       </div>
@@ -266,6 +262,13 @@ export default {
   .selflink-text {
     color: #ececec;
   }
+}
+
+.headerIcon {
+  width: 100%;
+  height:300px;
+  background: url('./assets/homeBanner.jpeg');
+  background-size: 100%;
 }
 
 .top_bar {

@@ -4,7 +4,7 @@
  * @Author: tangjiahao
  * @Date: 2023-01-25 16:22:07
  * @LastEditors: tangjiahao
- * @LastEditTime: 2023-01-29 17:00:01
+ * @LastEditTime: 2023-01-30 23:03:16
  * @FilePath: /tecc-gz/src/pages/HomePage.vue
  * Copyright (C) 2023 tangjiahao. All rights reserved.
 -->
@@ -240,7 +240,7 @@ export default {
     font-weight: bold;
   }
   .video-context {
-    padding-bottom: 5px;
+    padding: 10px 0;
     display: flex;
     justify-content: center;
     font-size: 20px;
@@ -255,6 +255,18 @@ export default {
       width: 100%;
     }
   }
+}
+
+.layout {
+  width:85vw
+}
+
+.w700 {
+  width: 60%
+}
+
+.w470 {
+  width: 38%
 }
 
 .layout-view {
