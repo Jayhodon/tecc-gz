@@ -4,7 +4,7 @@
  * @Author: tangjiahao
  * @Date: 2023-01-25 16:22:07
  * @LastEditors: tangjiahao
- * @LastEditTime: 2023-01-30 22:41:07
+ * @LastEditTime: 2023-01-31 11:44:48
  * @FilePath: /tecc-gz/src/pages/ServicePage.vue
  * Copyright (C) 2023 tangjiahao. All rights reserved.
 -->
@@ -60,7 +60,7 @@ export default {
   setup(props) {
     const state = reactive({
       tabList: tabConfig?.[props.route],
-      activeName:props.route
+      activeName:tabConfig?.[props.route][0].title
     });
     setTimeout(() => {
       state.tabList = [
@@ -186,6 +186,7 @@ export default {
 
     watch(props, (newProps) => {
       state.tabList = tabConfig[newProps.route];
+      state.activeName = tabConfig[newProps.route][0].title
     });
 
     return {
