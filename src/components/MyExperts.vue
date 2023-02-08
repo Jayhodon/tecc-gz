@@ -4,7 +4,7 @@
  * @Author: tangjiahao
  * @Date: 2023-01-25 16:22:07
  * @LastEditors: tangjiahao
- * @LastEditTime: 2023-01-30 16:12:05
+ * @LastEditTime: 2023-02-07 02:44:36
  * @FilePath: /tecc-gz/src/components/MyExperts.vue
  * Copyright (C) 2023 tangjiahao. All rights reserved.
 -->
@@ -37,7 +37,7 @@
         <span class="experts-tabs">{{ item.tabs }}</span>
         <span class="experts-type">
           <span class="experts-type-title">专家类型:</span>
-          <span class="experts-type-value">{{ item.type }}</span>
+            <span v-for="(ele,index) in item.type" :key="index" class="experts-type-value">{{ ele }}</span>
         </span>
       </div>
     </div>
@@ -47,11 +47,10 @@
 <script>
 import { reactive, toRefs } from "vue";
 import { Back } from "@element-plus/icons-vue";
+// import { getExpertsType, getExpertsList } from "../api/httpRequest";
 export default {
   name: "MyPractice",
-  props: {
-    innerHTML: String,
-  },
+  props: {},
   components: {
     Back,
   },
@@ -107,7 +106,7 @@ export default {
           name: "黄敏聪",
           info: "暨南大学社会科学部副教授,法学院国际法专业硕士生指导",
           tabs: "暨南大学社会科学部副教授",
-          type: "战略管理类",
+          type: ["战略管理类","战略管理类","战略管理类","战略管理类","战略管理类","战略管理类","战略管理类","战略管理类","战略管理类","战略管理类"],
         },
         {
           imgUrl:
@@ -115,7 +114,7 @@ export default {
           name: "李静",
           info: "暨南大学社会科学部副教授,法学院国际法专业硕士生指导",
           tabs: "暨南大学社会科学部副教授",
-          type: "战略管理类",
+          type: ["战略管理类"],
         },
         {
           imgUrl:
@@ -123,7 +122,7 @@ export default {
           name: "任艳",
           info: "暨南大学社会科学部副教授,法学院国际法专业硕士生指导",
           tabs: "暨南大学社会科学部副教授",
-          type: "战略管理类",
+          type: ["战略管理类"],
         },
         {
           imgUrl:
@@ -131,7 +130,7 @@ export default {
           name: "任艳",
           info: "暨南大学社会科学部副教授,法学院国际法专业硕士生指导",
           tabs: "暨南大学社会科学部副教授",
-          type: "战略管理类",
+          type: ["战略管理类"],
         },
         {
           imgUrl:
@@ -139,7 +138,7 @@ export default {
           name: "任艳",
           info: "暨南大学社会科学部副教授,法学院国际法专业硕士生指导",
           tabs: "暨南大学社会科学部副教授",
-          type: "战略管理类",
+          type: ["战略管理类"],
         },
       ],
       experts: "",
@@ -147,9 +146,39 @@ export default {
 
     // 智库类型点击事件
     const handleExperts = (type) => {
-      console.log(type);
       state.experts = type;
+      // // 请求对应专家列表
+      // getExpertsList().then((res) => {
+      //   res.rows.forEach((item) => {
+      //     state.expertsList.push({
+      //       imgUrl: item.imgUrl,
+      //       name: item.name,
+      //       info: item.info,
+      //       tabs: item.tabs,
+      //       type: item.expertsListTabsList,
+      //     });
+      //   });
+      // });
     };
+
+    // 初始化专家类型列表
+    const handleExpertsType = () => {
+      // getExpertsType().then((res) => {
+      //   res.rows.forEach((item) => {
+      //     state.expertsType.push({
+      //       title: item.title,
+      //       value: item.value,
+      //       expertsId: item.id,
+      //     });
+      //   });
+      // });
+    };
+
+    const init = () => {
+      handleExpertsType();
+    };
+
+    init();
 
     return {
       ...toRefs(state),

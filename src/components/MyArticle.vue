@@ -4,7 +4,7 @@
  * @Author: tangjiahao
  * @Date: 2023-01-25 16:22:07
  * @LastEditors: tangjiahao
- * @LastEditTime: 2023-01-29 17:12:16
+ * @LastEditTime: 2023-02-07 19:46:10
  * @FilePath: /tecc-gz/src/components/MyArticle.vue
  * Copyright (C) 2023 tangjiahao. All rights reserved.
 -->
@@ -14,20 +14,49 @@
 
 <script>
 import { reactive, toRefs, watch } from "vue";
+// import { getArticleUrl } from "../api/httpRequest";
+import { articleInnerHtml } from "../config/innerHtmlTest";
+import { useRouter } from "vue-router";
 export default {
   name: "MyArticle",
   props: {
-    innerHTML: String,
+    articleType: String,
+    articleId: Number,
   },
   components: {},
 
-
   setup(props) {
     const state = reactive({});
-    watch(props, (newProps) => {
-      let dom = document.getElementById("innerHtml");
-      dom.innerHTML = newProps.innerHTML;
-    });
+
+    const router = useRouter();
+
+    watch(
+      props,
+      (newProps) => {
+        setTimeout(() => {
+          // const router = useRouter();
+          let param = {
+            articleType:
+              newProps.articleType ||
+              router.currentRoute.value.query.articleType,
+            articleId:
+              newProps.articleId || router.currentRoute.value.query.articleId,
+          };
+          let dom = document.getElementById("innerHtml");
+          // getArticleUrl(param.articleType, param.articleId).then((res) => {
+          //   dom.innerHTML = res.rows[0].innerHTML;
+          // });
+          console.log(param, articleInnerHtml[param.articleType]);
+          let innerhtml = articleInnerHtml[param.articleType].filter(
+            (item) => item.articleId === param.articleId
+          )[0];
+          console.log(innerhtml);
+          dom.innerHTML = innerhtml.content;
+        }, 300);
+      },
+      { immediate: true, deep: true }
+    );
+
     return {
       ...toRefs(state),
     };

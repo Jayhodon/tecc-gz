@@ -4,7 +4,7 @@
  * @Author: tangjiahao
  * @Date: 2023-01-16 11:01:41
  * @LastEditors: tangjiahao
- * @LastEditTime: 2023-01-30 23:16:32
+ * @LastEditTime: 2023-02-07 19:45:38
  * @FilePath: /tecc-gz/src/TECCHome.vue
  * Copyright (C) 2023 tangjiahao. All rights reserved.
 -->
@@ -12,7 +12,7 @@
   <!-- top_bar 首页顶部栏 -->
   <div class="top_bar boxMo clearfix">
     <div class="layout">
-      <ul class="top_bar_list">
+      <!-- <ul class="top_bar_list">
         <li class="user-item">
           <div class="user-icon-content">
             <el-icon class="user-icon">
@@ -26,19 +26,17 @@
             <span class="selflink-text">个人中心</span>
           </a>
         </li>
-      </ul>
+      </ul> -->
     </div>
   </div>
   <!-- header 首页头部背景版 -->
   <div class="header">
     <div class="headerIcon">
-      <div class="logo">
-        <span>广东省商标品牌指导示范站</span>
-      </div>
+      <div class="logo"></div>
     </div>
   </div>
   <!-- nav 导航栏 -->
-  <div class="nav boxMo marB20">
+  <div class="nav boxMo marB40">
     <div class="nav_con">
       <div
         class="nav_tem clearfix"
@@ -106,9 +104,10 @@
     <!-- footer 页尾-->
     <div class="footer">
       <div class="clearfix">
-        <span
-          >合作单位: 广东商标协会 佛山市顺德区商标协会
-          深圳市品牌保护与发展促进会</span
+        相关链接：
+        <a
+          href="https://4021480981145.zhan.n.weimob.com/saas/zhan/4021480981145/1734121/index"
+          >广东省商标品牌指导示范站小程序</a
         >
       </div>
       <div class="clearfix">
@@ -122,10 +121,12 @@
 
 <script>
 import { reactive, toRefs, watch } from "vue";
-import { UserFilled } from "@element-plus/icons-vue";
+// import { UserFilled } from "@element-plus/icons-vue";
 import Home from "./pages/HomePage.vue";
 import Service from "./pages/ServicePage.vue";
 import { useRouter } from "vue-router";
+import { navConfig } from "./config/navConfig";
+// import {getNavList} from "./api/httpRequest";
 
 export default {
   name: "TECCHome",
@@ -135,81 +136,28 @@ export default {
   components: {
     Home,
     Service,
-    UserFilled,
+    // UserFilled,
   },
   setup: () => {
     const router = useRouter();
     const state = reactive({
       route: router.currentRoute.value.query.type || "home",
-      navObjList: [
-        {
-          value: "首页",
-          type: "home",
-          navId: 0,
-        },
-        {
-          value: "站点介绍",
-          children: [
-            {
-              value: "服务规范",
-              type: "service",
-            },
-            {
-              value: "工作规程",
-              type: "worklist",
-            },
-          ],
-          navId: 1,
-        },
-        {
-          value: "商标审查",
-          type: "examination",
-          navId: 2,
-        },
-        {
-          value: "宣传培训",
-          type: "advocacy",
-          navId: 3,
-        },
-        {
-          value: "政策法规",
-          children: [
-            {
-              value: "法律法规",
-              type: "laws",
-            },
-            {
-              value: "有关条例",
-              type: "relevant",
-            },
-          ],
-          navId: 4,
-        },
-        {
-          value: "专家智库",
-          type: "experts",
-          navId: 5,
-        },
-        {
-          value: "商标品牌研究",
-          children: [
-            {
-              value: "典型案例",
-              type: "testCase",
-            },
-            {
-              value: "研究报告",
-              type: "reports",
-            },
-            {
-              value: "商标实务",
-              type: "practice",
-            },
-          ],
-          navId: 6,
-        },
-      ],
+      navObjList: navConfig,
     });
+
+    // 初始化导航对象
+    // const handleNavList = () => {
+    //   getNavList().then(res=>{
+    //     res.data.forEach(item => {
+    //       state.navObjList.push(item)
+    //     });
+    //   })
+    // }
+
+    // const init = () => {
+    //   handleNavList()
+    // }
+    // init()
 
     // 路由切换
     const changeRouter = (type) => {
@@ -266,8 +214,8 @@ export default {
 
 .headerIcon {
   width: 100%;
-  height:300px;
-  background: url('./assets/homeBanner.jpeg');
+  height: 300px;
+  background: url("./assets/homeBanner.jpeg");
   background-size: 100%;
 }
 

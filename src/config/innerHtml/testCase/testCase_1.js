@@ -1,0 +1,3 @@
+export const testCase_1 = `
+<p><br></p><p style="text-align: center;"><span style="font-size: 29px;"><strong>国知局、中国银保监会、国家发改委：首批20个知识产权质押融资及保险典型案例</strong></span></p><p><br></p><p style="text-align: center;"><br></p><p style="text-align: center;"><span style="color: rgb(34, 34, 34); background-color: rgb(245, 245, 245);"><strong>“20个知识产权质押融资及保险典型案例清单。”</strong></span></p><p style="text-align: center;"><br></p><p style="text-align: center;"><img src="https://image-c.weimobwmc.com/saas-wxbiz/ac751451501a4d78b58049316cd30024.jpg?imageMogr2/quality/90" alt="" data-href="" style=""></p><p><br></p>
+`

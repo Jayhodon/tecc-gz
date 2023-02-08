@@ -4,7 +4,7 @@
  * @Author: tangjiahao
  * @Date: 2023-01-29 14:56:09
  * @LastEditors: tangjiahao
- * @LastEditTime: 2023-01-29 16:43:06
+ * @LastEditTime: 2023-02-07 20:06:27
  * @FilePath: /tecc-gz/src/router/index.js
  * Copyright (C) 2023 tangjiahao. All rights reserved.
  */
@@ -30,8 +30,6 @@ const router = createRouter({
             name: 'article',
             component: Home
         },
-
-
         {
             path: '/service',
             name: 'service',
@@ -84,5 +82,12 @@ const router = createRouter({
         },
     ]
 });
+
+router.beforeEach((to ,next) => {
+    if(to.fullPath === "/article?type=article") {
+        next()
+    }
+
+})
 
 export default router;

@@ -4,7 +4,7 @@
  * @Author: tangjiahao
  * @Date: 2023-01-25 16:22:07
  * @LastEditors: tangjiahao
- * @LastEditTime: 2023-01-31 11:44:48
+ * @LastEditTime: 2023-02-07 19:46:06
  * @FilePath: /tecc-gz/src/pages/ServicePage.vue
  * Copyright (C) 2023 tangjiahao. All rights reserved.
 -->
@@ -18,11 +18,12 @@
         :name="item.title"
       >
         <!-- 列表页组件 -->
-        <List v-if="item.type === 'list'" :list="item.list"></List>
+        <List v-if="item.type === 'list'" :listType='item.listType' :title='item.title'></List>
         <!-- 文章页组件 -->
         <Article
           v-else-if="item.type === 'article'"
-          :innerHTML="item.innerHtml"
+          :articleType="item.articleType"
+          :articleId="item.articleId"
         ></Article>
         <!-- 商标实务组件 -->
         <Practice v-else-if="item.type === 'practice'"></Practice>
@@ -39,12 +40,11 @@
 import { reactive, toRefs, watch } from "vue";
 import List from "../components/MyList.vue";
 import Article from "../components/MyArticle.vue";
-import Practice from "../components/MyPractice.vue"
-import Experts from "../components/MyExperts.vue"
-import Examination from "../components/MyExamination.vue"
-
+import Practice from "../components/MyPractice.vue";
+import Experts from "../components/MyExperts.vue";
+import Examination from "../components/MyExamination.vue";
+import { useRouter } from "vue-router";
 import { tabConfig } from "../config/tabConfig";
-import { innerHtml } from "../config/innerHtmlTest";
 export default {
   name: "ServicePage",
   props: {
@@ -55,139 +55,24 @@ export default {
     Article,
     Practice,
     Experts,
-    Examination
+    Examination,
   },
   setup(props) {
     const state = reactive({
       tabList: tabConfig?.[props.route],
-      activeName:tabConfig?.[props.route][0].title
+      activeName: tabConfig?.[props.route]?.[0]?.title,
     });
-    setTimeout(() => {
-      state.tabList = [
-        {
-          type: "article",
-          title: "文章",
-          innerHtml:innerHtml.content
-        },
-        {
-          type: "list",
-          title: "列表",
-          list: [
-            {
-              title:
-                "广东省知识产权保护中心关于举办2022年第五期专利开放许可培训班的通知",
-              time: "2022-12-22",
-              type: 'article',
-              articleId: '1'
-            },
-            {
-              title:
-                "广东省知识产权保护中心关于举办2022年第五期专利开放许可培训班的通知",
-              time: "2022-12-22",
-              type: 'article',
-              articleId: '1'
-            },
-            {
-              title:
-                "广东省知识产权保护中心关于举办2022年第五期专利开放许可培训班的通知",
-              time: "2022-12-22",
-              type: 'article',
-              articleId: '1'
-            },
-            {
-              title:
-                "广东省知识产权保护中心关于举办2022年第五期专利开放许可培训班的通知",
-              time: "2022-12-22",
-              type: 'article',
-              articleId: '1'
-            },
-            {
-              title:
-                "广东省知识产权保护中心关于举办2022年第五期专利开放许可培训班的通知",
-              time: "2022-12-22",
-              type: 'article',
-              articleId: '1'
-            },
-            {
-              title:
-                "广东省知识产权保护中心关于举办2022年第五期专利开放许可培训班的通知",
-              time: "2022-12-22",
-              type: 'article',
-              articleId: '1'
-            },
-            {
-              title:
-                "广东省知识产权保护中心关于举办2022年第五期专利开放许可培训班的通知",
-              time: "2022-12-22",
-              type: 'article',
-              articleId: '1'
-            },
-            {
-              title:
-                "广东省知识产权保护中心关于举办2022年第五期专利开放许可培训班的通知",
-              time: "2022-12-22",
-              type: 'article',
-              articleId: '1'
-            },
-            {
-              title:
-                "广东省知识产权保护中心关于举办2022年第五期专利开放许可培训班的通知",
-              time: "2022-12-22",
-              type: 'article',
-              articleId: '1'
-            },
-            {
-              title:
-                "广东省知识产权保护中心关于举办2022年第五期专利开放许可培训班的通知",
-              time: "2022-12-22",
-              type: 'article',
-              articleId: '1'
-            },
-            {
-              title:
-                "广东省知识产权保护中心关于举办2022年第五期专利开放许可培训班的通知",
-              time: "2022-12-22",
-              type: 'article',
-              articleId: '1'
-            },
-            {
-              title:
-                "广东省知识产权保护中心关于举办2022年第五期专利开放许可培训班的通知",
-              time: "2022-12-22",
-              type: 'article',
-              articleId: '1'
-            },
-            {
-              title:
-                "广东省知识产权保护中心关于举办2022年第五期专利开放许可培训班的通知",
-              time: "2022-12-22",
-              type: 'article',
-              articleId: '1'
-            },
-            {
-              title:
-                "广东省知识产权保护中心关于举办2022年第五期专利开放许可培训班的通知",
-              time: "2022-12-22",
-              type: 'article',
-              articleId: '1'
-            },
-            {
-              title:
-                "广东省知识产权保护中心关于举办2022年第五期专利开放许可培训班的通知",
-              time: "2022-12-22",
-              type: 'article',
-              articleId: '1'
-            },
-          ],
-        },
-      ];
-      state.activeName = state.tabList[0].title
-    }, 3000);
-
-    watch(props, (newProps) => {
-      state.tabList = tabConfig[newProps.route];
-      state.activeName = tabConfig[newProps.route][0].title
-    });
+    const router = useRouter();
+    // 监听首页nav栏目变化
+    watch(
+      props,
+      (newProps) => {
+        state.tabList = tabConfig[newProps.route] || router.currentRoute.value.query.type;
+        state.activeName = tabConfig[newProps.route]?.[0]?.title;
+        console.log(newProps,tabConfig[newProps.route]);
+      },
+      { immediate: true, deep: true }
+    );
 
     return {
       ...toRefs(state),

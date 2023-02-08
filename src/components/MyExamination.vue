@@ -4,7 +4,7 @@
  * @Author: tangjiahao
  * @Date: 2023-01-25 16:22:07
  * @LastEditors: tangjiahao
- * @LastEditTime: 2023-01-30 01:27:53
+ * @LastEditTime: 2023-02-07 02:44:15
  * @FilePath: /tecc-gz/src/components/MyExamination.vue
  * Copyright (C) 2023 tangjiahao. All rights reserved.
 -->
@@ -19,7 +19,7 @@
     <div class="info-content">
       {{ info.content }}
       <span>
-        <a class="info-detail" href="#">[ 查看详情 ]</a>
+        <a class="info-detail" :href="info.infoDetailUrl">[ 查看详情 ]</a>
       </span>
     </div>
   </div>
@@ -34,12 +34,12 @@
     <div class="system-content">
       <div class="system-content-item">
         <span>
-          <a href="#">商标网上申请系统</a>
+          <a :href="info.systemUrl">商标网上申请系统</a>
         </span>
       </div>
       <div class="system-content-item">
         <span>
-          <a href="#">商标检索</a>
+          <a :href="info.searchUrl">商标检索</a>
         </span>
       </div>
     </div>
@@ -53,7 +53,7 @@
     </div>
     <div class="flow-chart-content">
       <a href="#">
-        <img src="../assets/flow_chart.png" />
+        <img :src="info.imgUrl" />
       </a>
     </div>
   </div>
@@ -64,22 +64,13 @@
         <span>资料下载</span>
       </span>
       <span class="more">
-        <a href="#">更多 ></a>
+        <a :href="info.moreUrl">更多 ></a>
       </span>
     </div>
     <div class="download-content">
-      <ul>
+      <ul v-for="(item, index) in info.downloadUrl" :key="index">
         <li>
-          <a href="#">商标业务缴费指南</a>
-        </li>
-        <li>
-          <a href="#">广州商标审查协作中心受理业务明细</a>
-        </li>
-        <li>
-          <a href="#">《小明与商标的故事》宣传折页系列材料201912版-上</a>
-        </li>
-        <li>
-          <a href="#">《小明与商标的故事》宣传折页系列材料201912版-下</a>
+          <a :href="item.url">{{ item.title }}</a>
         </li>
       </ul>
     </div>
@@ -89,11 +80,10 @@
 <script>
 import { reactive, toRefs } from "vue";
 import { Document, Cpu, DataLine, Download } from "@element-plus/icons-vue";
+// import { getBusinessServicesList } from "../api/httpRequest";
 export default {
   name: "MyExamination",
-  props: {
-    innerHTML: String,
-  },
+  props: {},
   components: {
     Document,
     Cpu,
@@ -105,8 +95,52 @@ export default {
     const state = reactive({
       info: {
         content: `接受国家知识产权局商标局委托，承担商标相关业务的现场申请受理及商标注册申请的形式审查、商标注册申请的实质审查，以及商标变更转让续展申请审查、地理标志商标审查、马德里国际注册商标、商标专用权质权登记等工作；承办知识产权局商标局、商标评审委员会交办的其他事项。`,
+        imgUrl: require("../assets/flow_chart.png"),
+        infoDetailUrl: "#",
+        moreUrl: "#",
+        searchUrl: "#",
+        systemUrl: "#",
+        downloadUrl: [
+          {
+            url: "#",
+            title: "商标业务缴费指南",
+          },
+          {
+            url: "#",
+            title: "广州商标审查协作中心受理业务明细",
+          },
+          {
+            url: "#",
+            title: "《小明与商标的故事》宣传折页系列材料201912版-上",
+          },
+          {
+            url: "#",
+            title: "《小明与商标的故事》宣传折页系列材料201912版-下",
+          },
+        ],
       },
     });
+
+    const handleBusinessServicesList = () => {
+      // getBusinessServicesList().then((res) => {
+      //   state.info = {
+      //     content: `接受国家知识产权局商标局委托，承担商标相关业务的现场申请受理及商标注册申请的形式审查、商标注册申请的实质审查，以及商标变更转让续展申请审查、地理标志商标审查、马德里国际注册商标、商标专用权质权登记等工作；承办知识产权局商标局、商标评审委员会交办的其他事项。`,
+      //     imgUrl: res.rows[0].imgUrl,
+      //     infoDetailUrl: res.rows[0].infoDetailUrl,
+      //     moreUrl: res.rows[0].moreUrl,
+      //     searchUrl: res.rows[0].searchUrl,
+      //     systemUrl: res.rows[0].systemUrl,
+      //     downloadUrl: res.rows[0].businessDownurlList,
+      //   };
+      // });
+    };
+
+    const init = () => {
+      handleBusinessServicesList();
+    };
+
+    init();
+
     return {
       ...toRefs(state),
     };

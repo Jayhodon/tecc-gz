@@ -4,7 +4,7 @@
  * @Author: tangjiahao
  * @Date: 2023-01-26 20:51:54
  * @LastEditors: tangjiahao
- * @LastEditTime: 2023-01-29 17:26:18
+ * @LastEditTime: 2023-02-07 19:37:44
  * @FilePath: /tecc-gz/src/config/tabConfig.js
  * Copyright (C) 2023 tangjiahao. All rights reserved.
  */
@@ -12,7 +12,7 @@ export const tabConfig = {
   article: [
     {
       type: "article",
-      title: "文章内容",
+      title: "文 章",
       innerHtml: "",
     }
   ],
@@ -21,6 +21,8 @@ export const tabConfig = {
       type: "article",
       title: "服务规范",
       innerHtml: "",
+      articleType: "service",
+      articleId: 1,
     }
   ],
   worklist: [
@@ -28,6 +30,8 @@ export const tabConfig = {
       type: "article",
       title: "工作规程",
       innerHtml: "",
+      articleType: "worklist",
+      articleId: 1,
     }
   ],
   examination: [
@@ -35,26 +39,18 @@ export const tabConfig = {
       type: "examination",
       title: "业务服务",
     },
-    {
-      type: "list",
-      title: "业务资讯",
-      list: [],
-    }
   ],
   advocacy: [
     {
       type: "list",
-      title: "活动通知",
-      list: [],
-    },
-    {
-      type: "list",
-      title: "培训资料",
+      title: "活动资讯",
+      listType:'activeInfo',
       list: [],
     },
     {
       type: "list",
       title: "培训视频",
+      listType:'teachVideo',
       list: [],
     },
   ],
@@ -62,20 +58,15 @@ export const tabConfig = {
     {
       type: "list",
       title: "法律法规",
+      listType:'laws',
       list: [],
     }
-  ],
-  relevant: [
-    {
-      type: "list",
-      title: "有关条例",
-      list: [],
-    },
   ],
   testCase: [
     {
       type: "list",
       title: "典型案例",
+      listType:'testCase',
       list: [],
     },
   ],
@@ -83,6 +74,7 @@ export const tabConfig = {
     {
       type: "list",
       title: "研究报告",
+      listType:'reports',
       list: [],
     },
   ],
