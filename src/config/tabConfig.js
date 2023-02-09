@@ -4,7 +4,7 @@
  * @Author: tangjiahao
  * @Date: 2023-01-26 20:51:54
  * @LastEditors: tangjiahao
- * @LastEditTime: 2023-02-07 19:37:44
+ * @LastEditTime: 2023-02-09 11:21:16
  * @FilePath: /tecc-gz/src/config/tabConfig.js
  * Copyright (C) 2023 tangjiahao. All rights reserved.
  */
@@ -22,7 +22,7 @@ export const tabConfig = {
       title: "服务规范",
       innerHtml: "",
       articleType: "service",
-      articleId: 1,
+      articleId: '1',
     }
   ],
   worklist: [
@@ -31,7 +31,7 @@ export const tabConfig = {
       title: "工作规程",
       innerHtml: "",
       articleType: "worklist",
-      articleId: 1,
+      articleId: '1',
     }
   ],
   examination: [

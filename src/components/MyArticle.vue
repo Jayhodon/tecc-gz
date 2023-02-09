@@ -4,7 +4,7 @@
  * @Author: tangjiahao
  * @Date: 2023-01-25 16:22:07
  * @LastEditors: tangjiahao
- * @LastEditTime: 2023-02-07 19:46:10
+ * @LastEditTime: 2023-02-09 11:19:31
  * @FilePath: /tecc-gz/src/components/MyArticle.vue
  * Copyright (C) 2023 tangjiahao. All rights reserved.
 -->
@@ -51,7 +51,7 @@ export default {
             (item) => item.articleId === param.articleId
           )[0];
           console.log(innerhtml);
-          dom.innerHTML = innerhtml.content;
+          dom.innerHTML = innerhtml?.content;
         }, 300);
       },
       { immediate: true, deep: true }
