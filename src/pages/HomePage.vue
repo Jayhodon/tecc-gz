@@ -4,7 +4,7 @@
  * @Author: tangjiahao
  * @Date: 2023-01-25 16:22:07
  * @LastEditors: tangjiahao
- * @LastEditTime: 2023-02-07 02:45:50
+ * @LastEditTime: 2023-02-10 15:06:18
  * @FilePath: /tecc-gz/src/pages/HomePage.vue
  * Copyright (C) 2023 tangjiahao. All rights reserved.
 -->
@@ -95,23 +95,23 @@ export default {
     const state = reactive({
       partnerList: [
         {
-          url: require("../assets/FST_ACT.png"),
+          url: require("../assets/home/FST_ACT.png"),
           detail: "佛山市顺德区商标协会",
         },
         {
-          url: require("../assets/FST_ACT.png"),
+          url: require("../assets/home/FST_ACT.png"),
           detail: "佛山市顺德区商标协会",
         },
         {
-          url: require("../assets/FST_ACT.png"),
+          url: require("../assets/home/FST_ACT.png"),
           detail: "佛山市顺德区商标协会",
         },
         {
-          url: require("../assets/FST_ACT.png"),
+          url: require("../assets/home/FST_ACT.png"),
           detail: "佛山市顺德区商标协会",
         },
       ],
-      videoUrl: require("../../../video.mp4"),
+      videoUrl: require("../assets/home/video.mp4"),
     });
 
     // 初始化视频链接

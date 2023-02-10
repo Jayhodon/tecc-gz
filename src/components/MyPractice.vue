@@ -4,7 +4,7 @@
  * @Author: tangjiahao
  * @Date: 2023-01-25 16:22:07
  * @LastEditors: tangjiahao
- * @LastEditTime: 2023-02-07 03:26:44
+ * @LastEditTime: 2023-02-10 14:51:41
  * @FilePath: /tecc-gz/src/components/MyPractice.vue
  * Copyright (C) 2023 tangjiahao. All rights reserved.
 -->
@@ -31,31 +31,31 @@ export default {
       info: [
         {
           url: "https://sbj.cnipa.gov.cn/sbj/sbsq/zclct/200902/t20090205_623.html",
-          imgUrl: require("../assets/practice_1.jpeg"),
+          imgUrl: require("../assets/practice/practice_1.jpeg"),
         },
         {
           url: "https://sbj.cnipa.gov.cn/sbj/sbsq/sfbz/",
-          imgUrl: require("../assets/practice_2.jpeg"),
+          imgUrl: require("../assets/practice/practice_2.jpeg"),
         },
         {
           url: "https://sbj.cnipa.gov.cn/sbj/sbsq/sphfwfl/",
-          imgUrl: require("../assets/practice_3.jpeg"),
+          imgUrl: require("../assets/practice/practice_3.jpeg"),
         },
         {
           url: "https://view.officeapps.live.com/op/view.aspx?src=https%3A%2F%2Fsbj.cnipa.gov.cn%2Fsbj%2Fsbsq%2Fsqss%2F202112%2FW020221128315844050165.docx&wdOrigin=BROWSELINK",
-          imgUrl: require("../assets/practice_4.jpeg"),
+          imgUrl: require("../assets/practice/practice_4.jpeg"),
         },
         {
           url: "https://view.officeapps.live.com/op/view.aspx?src=https%3A%2F%2Fsbj.cnipa.gov.cn%2Fsbj%2Fsbsq%2Fsqss%2F202112%2FW020221128315844074192.docx&wdOrigin=BROWSELINK",
-          imgUrl: require("../assets/practice_5.jpeg"),
+          imgUrl: require("../assets/practice/practice_5.jpeg"),
         },
         {
           url: "https://view.officeapps.live.com/op/view.aspx?src=https%3A%2F%2Fsbj.cnipa.gov.cn%2Fsbj%2Fsbsq%2Fsqss%2F202112%2FW020221128315844074051.docx&wdOrigin=BROWSELINK",
-          imgUrl: require("../assets/practice_6.jpeg"),
+          imgUrl: require("../assets/practice/practice_6.jpeg"),
         },
         {
           url: "https://sbj.cnipa.gov.cn/sbj/tzgg/202212/W020221227290662367020.pdf",
-          imgUrl: require("../assets/practice_7.jpeg"),
+          imgUrl: require("../assets/practice/practice_7.jpeg"),
         },
       ],
     });

@@ -4,7 +4,7 @@
  * @Author: tangjiahao
  * @Date: 2023-01-25 16:22:07
  * @LastEditors: tangjiahao
- * @LastEditTime: 2023-02-07 19:46:06
+ * @LastEditTime: 2023-02-10 11:56:20
  * @FilePath: /tecc-gz/src/pages/ServicePage.vue
  * Copyright (C) 2023 tangjiahao. All rights reserved.
 -->
@@ -68,8 +68,11 @@ export default {
       props,
       (newProps) => {
         state.tabList = tabConfig[newProps.route] || router.currentRoute.value.query.type;
+        console.log(newProps.route);
+        if(newProps.route === 'article') {
+          state.tabList[0].title = router.currentRoute.value.query.articleTitle
+        }
         state.activeName = tabConfig[newProps.route]?.[0]?.title;
-        console.log(newProps,tabConfig[newProps.route]);
       },
       { immediate: true, deep: true }
     );

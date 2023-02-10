@@ -4,7 +4,7 @@
  * @Author: tangjiahao
  * @Date: 2023-01-16 11:01:41
  * @LastEditors: tangjiahao
- * @LastEditTime: 2023-02-07 19:45:38
+ * @LastEditTime: 2023-02-10 15:06:48
  * @FilePath: /tecc-gz/src/TECCHome.vue
  * Copyright (C) 2023 tangjiahao. All rights reserved.
 -->
@@ -215,7 +215,7 @@ export default {
 .headerIcon {
   width: 100%;
   height: 300px;
-  background: url("./assets/homeBanner.jpeg");
+  background: url("./assets/home/homeBanner.jpeg");
   background-size: 100%;
 }
 

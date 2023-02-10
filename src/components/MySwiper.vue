@@ -4,7 +4,7 @@
  * @Author: tangjiahao
  * @Date: 2023-01-19 15:15:39
  * @LastEditors: tangjiahao
- * @LastEditTime: 2023-02-07 02:45:15
+ * @LastEditTime: 2023-02-10 15:06:54
  * @FilePath: /tecc-gz/src/components/MySwiper.vue
  * Copyright (C) 2023 tangjiahao. All rights reserved.
 -->
@@ -60,18 +60,18 @@ export default {
     const state = reactive({
       imgs: [
         {
-          imgUrl: require("../assets/Top_Banner_1.jpeg"),
+          imgUrl: require("../assets/home/Top_Banner_1.jpeg"),
           title: "「酒行业品牌维权及商标保护线上研讨会」成功举办",
           url: "https://mp.weixin.qq.com/s/wXGxpNCfGBm8up5LJCvVng",
         },
         {
-          imgUrl: require("../assets/Top_Banner_2.jpeg"),
+          imgUrl: require("../assets/home/Top_Banner_2.jpeg"),
           title:
             "“恶意注册与储备性、防御性商标的冲突”主题培训会——“广东省商标品牌指导示范站”系列活动第一讲",
           url: "https://mp.weixin.qq.com/s/31vfLUvAVn421FRrH7oJ7w",
         },
         {
-          imgUrl: require("../assets/Top_Banner_3.jpeg"),
+          imgUrl: require("../assets/home/Top_Banner_3.jpeg"),
           title:
             "品牌保护之用商标理清品牌边界——广东省商标品牌指导示范站服务系列活动第二讲",
           url: "https://mp.weixin.qq.com/s/31vfLUvAVn421FRrH7oJ7w",

@@ -4,7 +4,7 @@
  * @Author: tangjiahao
  * @Date: 2023-01-25 16:22:07
  * @LastEditors: tangjiahao
- * @LastEditTime: 2023-02-07 02:44:15
+ * @LastEditTime: 2023-02-10 15:08:02
  * @FilePath: /tecc-gz/src/components/MyExamination.vue
  * Copyright (C) 2023 tangjiahao. All rights reserved.
 -->
@@ -19,7 +19,7 @@
     <div class="info-content">
       {{ info.content }}
       <span>
-        <a class="info-detail" :href="info.infoDetailUrl">[ 查看详情 ]</a>
+        <a class="info-detail" target="_blank" :href="info.infoDetailUrl">[ 查看详情 ]</a>
       </span>
     </div>
   </div>
@@ -34,12 +34,12 @@
     <div class="system-content">
       <div class="system-content-item">
         <span>
-          <a :href="info.systemUrl">商标网上申请系统</a>
+          <a target="_blank" :href="info.systemUrl">商标网上申请系统</a>
         </span>
       </div>
       <div class="system-content-item">
         <span>
-          <a :href="info.searchUrl">商标检索</a>
+          <a target="_blank" :href="info.searchUrl">商标检索</a>
         </span>
       </div>
     </div>
@@ -52,7 +52,7 @@
       </span>
     </div>
     <div class="flow-chart-content">
-      <a href="#">
+      <a>
         <img :src="info.imgUrl" />
       </a>
     </div>
@@ -64,13 +64,13 @@
         <span>资料下载</span>
       </span>
       <span class="more">
-        <a :href="info.moreUrl">更多 ></a>
+        <a target="_blank" :href="info.moreUrl" >更多 ></a>
       </span>
     </div>
     <div class="download-content">
       <ul v-for="(item, index) in info.downloadUrl" :key="index">
         <li>
-          <a :href="item.url">{{ item.title }}</a>
+          <a target="_blank" :href="item.url">{{ item.title }}</a>
         </li>
       </ul>
     </div>
@@ -95,26 +95,26 @@ export default {
     const state = reactive({
       info: {
         content: `接受国家知识产权局商标局委托，承担商标相关业务的现场申请受理及商标注册申请的形式审查、商标注册申请的实质审查，以及商标变更转让续展申请审查、地理标志商标审查、马德里国际注册商标、商标专用权质权登记等工作；承办知识产权局商标局、商标评审委员会交办的其他事项。`,
-        imgUrl: require("../assets/flow_chart.png"),
-        infoDetailUrl: "#",
-        moreUrl: "#",
-        searchUrl: "#",
-        systemUrl: "#",
+        imgUrl: require("../assets/examination/flow_chart.png"),
+        infoDetailUrl: "https://www.gippc.com.cn/ippc/c100006/fwzl_list_tt.shtml",
+        moreUrl: "https://www.gippc.com.cn/ippc/c100009/fwzl_list2.shtml",
+        searchUrl: "https://r.gpic.gd.cn/route/hostingplatform/search/searchIndex",
+        systemUrl: "https://sbj.cnipa.gov.cn/sbj/wssq/",
         downloadUrl: [
           {
-            url: "#",
+            url: "https://www.gippc.com.cn/ippc/c100009/202004/fec206de54674158a0fa9df99f443bc7.shtml",
             title: "商标业务缴费指南",
           },
           {
-            url: "#",
+            url: "https://www.gippc.com.cn/ippc/c100009/202004/8ea45ac069954e12a4f3c72b781bff1c.shtml",
             title: "广州商标审查协作中心受理业务明细",
           },
           {
-            url: "#",
+            url: "https://www.gippc.com.cn/ippc/c100009/202004/4423e61c0c984b5ca32ebbabb1153e64.shtml",
             title: "《小明与商标的故事》宣传折页系列材料201912版-上",
           },
           {
-            url: "#",
+            url: "https://www.gippc.com.cn/ippc/c100009/202004/1366cf9cbef645668c2e110dabb34ac7.shtml",
             title: "《小明与商标的故事》宣传折页系列材料201912版-下",
           },
         ],

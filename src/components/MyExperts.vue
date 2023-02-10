@@ -4,7 +4,7 @@
  * @Author: tangjiahao
  * @Date: 2023-01-25 16:22:07
  * @LastEditors: tangjiahao
- * @LastEditTime: 2023-02-07 02:44:36
+ * @LastEditTime: 2023-02-10 14:08:07
  * @FilePath: /tecc-gz/src/components/MyExperts.vue
  * Copyright (C) 2023 tangjiahao. All rights reserved.
 -->
@@ -24,22 +24,28 @@
       <div class="back" @click="handleExperts('')">
         <el-icon><Back /></el-icon>
       </div>
-      <div
-        class="experts-item"
-        v-for="(item, index) in expertsList"
-        :key="index"
-      >
-        <div class="img-item">
-          <img :src="item.imgUrl" />
+      <div class="experts" v-for="(item, index) in expertsList" :key="index">
+        <div class="experts-item" @click="handleExpertsList(item.expertsId)">
+          <div class="img-item">
+            <img :src="item.imgUrl" width="100%" height="100%" />
+          </div>
+          <span class="experts-name">专家介绍：{{ item.name }}</span>
+          <span class="experts-info">{{ item.info }}</span>
+          <span class="experts-tabs">{{ item.tabs }}</span>
+          <span class="experts-type">
+            <span class="experts-type-title">专家类型:</span>
+            <span
+              v-for="(ele, index) in item.type"
+              :key="index"
+              class="experts-type-value"
+              >{{ ele }}</span
+            >
+          </span>
         </div>
-        <span class="experts-name">专家介绍：{{ item.name }}</span>
-        <span class="experts-info">{{ item.info }}</span>
-        <span class="experts-tabs">{{ item.tabs }}</span>
-        <span class="experts-type">
-          <span class="experts-type-title">专家类型:</span>
-            <span v-for="(ele,index) in item.type" :key="index" class="experts-type-value">{{ ele }}</span>
-        </span>
       </div>
+      <div class="null-data" v-if="expertsList.length === 0">
+    <span>暂无数据</span>
+  </div>
     </div>
   </div>
 </template>
@@ -47,6 +53,8 @@
 <script>
 import { reactive, toRefs } from "vue";
 import { Back } from "@element-plus/icons-vue";
+import { expertsConfig } from "../config/expertsConfig.js"
+import { useRouter } from "vue-router";
 // import { getExpertsType, getExpertsList } from "../api/httpRequest";
 export default {
   name: "MyPractice",
@@ -56,6 +64,7 @@ export default {
   },
 
   setup() {
+    const router = useRouter();
     const state = reactive({
       expertsType: [
         {
@@ -99,54 +108,20 @@ export default {
           expertsId: 7,
         },
       ],
-      expertsList: [
-        {
-          imgUrl:
-            "http://pic.imeitou.com/uploads/allimg/210717/3-210GG64111.jpg",
-          name: "黄敏聪",
-          info: "暨南大学社会科学部副教授,法学院国际法专业硕士生指导",
-          tabs: "暨南大学社会科学部副教授",
-          type: ["战略管理类","战略管理类","战略管理类","战略管理类","战略管理类","战略管理类","战略管理类","战略管理类","战略管理类","战略管理类"],
-        },
-        {
-          imgUrl:
-            "http://pic.imeitou.com/uploads/allimg/210717/3-210GG64111.jpg",
-          name: "李静",
-          info: "暨南大学社会科学部副教授,法学院国际法专业硕士生指导",
-          tabs: "暨南大学社会科学部副教授",
-          type: ["战略管理类"],
-        },
-        {
-          imgUrl:
-            "http://pic.imeitou.com/uploads/allimg/210717/3-210GG64111.jpg",
-          name: "任艳",
-          info: "暨南大学社会科学部副教授,法学院国际法专业硕士生指导",
-          tabs: "暨南大学社会科学部副教授",
-          type: ["战略管理类"],
-        },
-        {
-          imgUrl:
-            "http://pic.imeitou.com/uploads/allimg/210717/3-210GG64111.jpg",
-          name: "任艳",
-          info: "暨南大学社会科学部副教授,法学院国际法专业硕士生指导",
-          tabs: "暨南大学社会科学部副教授",
-          type: ["战略管理类"],
-        },
-        {
-          imgUrl:
-            "http://pic.imeitou.com/uploads/allimg/210717/3-210GG64111.jpg",
-          name: "任艳",
-          info: "暨南大学社会科学部副教授,法学院国际法专业硕士生指导",
-          tabs: "暨南大学社会科学部副教授",
-          type: ["战略管理类"],
-        },
-      ],
+      originExpertsList: expertsConfig,
       experts: "",
+      expertsList: [],
     });
 
     // 智库类型点击事件
     const handleExperts = (type) => {
+      state.expertsList=[]
       state.experts = type;
+      state.originExpertsList.forEach((item) => {
+        if (item.expertsType.includes(type)) {
+          state.expertsList.push(item);
+        }
+      });
       // // 请求对应专家列表
       // getExpertsList().then((res) => {
       //   res.rows.forEach((item) => {
@@ -160,6 +135,19 @@ export default {
       //   });
       // });
     };
+
+    const handleExpertsList = (expertsId) => {
+      console.log(expertsId);
+      router.push({
+        path: "/article",
+        query: {
+          type: 'article',
+          articleType: 'experts',
+          articleId: expertsId,
+          articleTitle: '专家介绍'
+        },
+      });
+    }
 
     // 初始化专家类型列表
     const handleExpertsType = () => {
@@ -183,6 +171,7 @@ export default {
     return {
       ...toRefs(state),
       handleExperts,
+      handleExpertsList
     };
   },
 };
@@ -200,7 +189,7 @@ export default {
   .item {
     margin: 20px;
     width: 20%;
-    background: url("../assets/experts.jpeg");
+    background: url("../assets/myExperts/experts.jpeg");
     height: 150px;
     display: flex;
     font-size: 20px;
@@ -217,48 +206,54 @@ export default {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
-  .experts-item {
+  .experts {
     width: 30%;
-    display: flex;
-    flex-direction: column;
     border: 1px solid #ccc;
-    align-items: center;
     margin: 20px;
     padding: 5px;
-    .img-item {
-      margin: 5px;
-      width: 280px;
-      height: 280px;
-      border: 1px solid #ccc;
-      border-radius: 50%;
-      overflow: hidden;
-    }
-    .experts-name {
-      font-size: 22px;
-      font-weight: bold;
-      margin: 5px;
-      color: #646464;
-    }
-    .experts-info {
-      font-size: 14px;
-      margin: 5px 25px;
-      color: #797979;
-    }
-    .experts-tabs {
-      font-size: 14px;
-      margin: 5px 25px;
-      color: #53a0d1;
-    }
-    .experts-type-title {
-      font-size: 14px;
-      margin: 5px;
-      color: #797979;
-    }
+    .experts-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      .img-item {
+        margin: 5px;
+        width: 280px;
+        height: 280px;
+        border: 1px solid #ccc;
+        border-radius: 50%;
+        overflow: hidden;
+        img {
+          height: 100%;
+          width: 100%;
+        }
+      }
+      .experts-name {
+        font-size: 22px;
+        font-weight: bold;
+        margin: 5px;
+        color: #646464;
+      }
+      .experts-info {
+        font-size: 14px;
+        margin: 5px 25px;
+        color: #797979;
+      }
+      .experts-tabs {
+        font-size: 14px;
+        margin: 5px 25px;
+        color: #53a0d1;
+      }
+      .experts-type-title {
+        font-size: 14px;
+        margin: 5px;
+        color: #797979;
+      }
 
-    .experts-type-value {
-      font-size: 14px;
-      margin: 5px;
-      color: #53a0d1;
+      .experts-type-value {
+        font-size: 14px;
+        margin: 5px;
+        color: #53a0d1;
+      }
     }
   }
   .back {
@@ -272,5 +267,12 @@ export default {
       color: #3e97f5;
     }
   }
+}
+.null-data {
+  height: 200px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  color: #545454;
 }
 </style>
